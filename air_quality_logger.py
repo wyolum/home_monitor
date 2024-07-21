@@ -4,8 +4,9 @@ import json
 import os.path
 import sqlite3
 
-HOME = '/home/justin/tmp'
+HOME = os.path.split(os.path.abspath('air_quality_tk.py'))[0]
 DB_FILE = os.path.join(HOME, 'air_quality_2.db')
+
 sql = '''\
 CREATE TABLE IF NOT EXISTS AirQuality 
     (measurement_time DATETIME UNIQUE,
@@ -26,7 +27,7 @@ db = sqlite3.connect(DB_FILE)
 db.execute(sql)
 
 # MQTT settings
-MQTT_BROKER = "192.168.86.153"
+MQTT_BROKER = "192.168.86.177"
 
 MQTT_PORT = 1883
 MQTT_TOPIC = "airquality/airquality_3_A4BB24/state"
